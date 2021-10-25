@@ -2,7 +2,10 @@ const prompt = require('prompt-sync')()
 // 1
 function sumAll(arr) {
     const [minVal, maxVal] = arr.sort((a, b) => a - b)
+    return(maxVal*(maxVal+1) - (minVal-1)*minVal) / 2
 }
+
+console.log(sumAll([4,1]))
 
 // 2
 function getUnique(arr1, arr2) {
@@ -20,7 +23,8 @@ function delElements(arr, ...args) {
 
 // 4
 function whatIsInAName(array, object) {
-
+    return array
+      .filter(item => Object.keys(object).every(key => object[key] === item[key]));
 }
 
 // 5
@@ -34,9 +38,16 @@ function wordSwitcher(string, switched, switcher) {
 }
 
 // 7 check this!
-function fearNotLetter(str) {
+function fearNotLetter(string) {
+    let allChars = "";
+    let notChars = new RegExp("[^" + string + "]", "g");
 
-    return undefined
+    for (let i = 0; allChars[allChars.length - 1] !== string[string.length - 1]; i++)
+        allChars += String.fromCharCode(string[0].charCodeAt(0) + i);
+
+    return allChars.match(notChars)
+      ? allChars.match(notChars).join("")
+      : undefined;
 }
 
 // 8
@@ -78,8 +89,8 @@ function getPrimes(number) {
 }
 
 // 11
-function deleteElem(array) {
-
+function dropElements(array, func) {
+    return array.filter(item => func(item))
 }
 
 // 12
@@ -121,7 +132,7 @@ module.exports = {
     uniqueInArray, // 8
     convertSymbols, // 9
     getPrimes, // 10
-    deleteElem, //11
+    dropElements, //11
     steamrollArray, //12
     getSum //13
 }
