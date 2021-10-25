@@ -5,7 +5,6 @@ function sumAll(arr) {
     return(maxVal*(maxVal+1) - (minVal-1)*minVal) / 2
 }
 
-console.log(sumAll([4,1]))
 
 // 2
 function getUnique(arr1, arr2) {
